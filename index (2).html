@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <style>
+        img {
+            width:200x;
+            height:200px;
+             border:1px solid red;
+             border-radius: 100px;
+            }
+    </style>
+    <script>
+         function LoadTime(){
+            var now = new Date();
+            document.getElementById("lblTime").innerHTML = now.toLocaleTimeString();
+        }
+        function LoadDate(){
+            var now = new Date();
+            document.getElementById("lblDate").innerHTML = now.toDateString();
+            var hrs = now.getHours();
+            var img = document.querySelector("img");
+            var p = document.querySelector("p");
+            if(hrs>=0 && hrs<=12) {
+                img.src = "../../../../public/images/goodmorning.gif";
+                p.innerHTML = "Hello ! Good Morning";
+            } else if (hrs>=13 && hrs<=17) {
+                img.src= "../../../../public/images/goodafternoon.gif";
+                p.innerHTML = "Hello ! Good Afternoon";
+            } else if(hrs>17 && hrs<=23) {
+                img.src = "../../../../public/images/goodevening.gif";
+                p.innerHTML = "Hello ! Good Evening";
+            }
+        }
+
+        function bodyload(){
+            setInterval(LoadTime, 1000);
+            LoadDate();
+        }
+    </script>
+</head>
+<body class="container-fluid" onload="bodyload()">
+    <div class="btn-toolbar bg-danger d-flex mt-2 justify-content-between">
+        <div >
+            <button class="btn btn-danger">Home</button>
+            <button class="btn btn-danger">Fashion</button>
+            <button class="btn btn-danger">Electronics</button>
+        </div>
+        <div>
+            <button class="btn btn-danger"><span id="lblDate"></span></button>
+        </div>
+        <div>
+            <button class="btn btn-danger"><span id="bi bi-clock"></span><span id="lblTime"></span></button>
+        </div>
+    </div>
+    <main style="height: 400px;" class="d-flex justify-content-center align-items-center">
+        <div class="text-center">
+            <img>
+            <p></p>
+        </div>
+    </main>
+</body>
+</html>
